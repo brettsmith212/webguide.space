@@ -8,16 +8,18 @@ import Blog from "./components/blog/Blog";
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Navbar />
+    <main className="mx-16">
+      <Router>
+        <Navbar />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/theguide" element={<TheGuide />} />
-        <Route path="/brettsmith-portfolio" element={<Portfolio />} />
-        <Route path="/blog" element={<Blog />} />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/theguide" element={<TheGuide />} />
+          <Route path="/brettsmith-portfolio" element={<Portfolio />} />
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+      </Router>
+    </main>
   );
 };
 

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   return (
-    <div className="flex justify-between px-12 py-8">
+    <nav className="flex justify-between my-8">
       <div>
         <NavLink to="/">WebGuide</NavLink>
       </div>
@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
         <NavLink to="/blog">Blog</NavLink>
         <NavLink to="/brettsmith-portfolio">Portfolio</NavLink>
       </div>
-    </div>
+    </nav>
   );
 };
 
