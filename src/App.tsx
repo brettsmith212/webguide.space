@@ -2,23 +2,23 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
+import TheGuide from "./components/guide/TheGuide";
+import Portfolio from "./components/portfolio/Portfolio";
+import Blog from "./components/blog/Blog";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  const handleClick = () => {
-    setCount((prev) => prev + 1);
-  };
-
+const App: React.FC = () => {
   return (
     <Router>
       <Navbar />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/theguide" element={<TheGuide />} />
+        <Route path="/brettsmith-portfolio" element={<Portfolio />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
