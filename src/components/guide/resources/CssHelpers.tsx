@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../supabaseClient";
-import data from "../guide-data";
-import { Link } from "react-router-dom";
 
 const CssHelpers = () => {
   const [cssHelpers, setCssHelpers] = useState<any[]>();
@@ -33,7 +31,10 @@ const CssHelpers = () => {
   }, []);
 
   useEffect(() => {
-    const helpersArr = dataArr.map((resource) => (
+    const filteredHelpers = dataArr.filter(
+      (resource) => resource.category === "cssHelpers"
+    );
+    const helpersArr = filteredHelpers.map((resource) => (
       <a href={resource.url} target="_blank" key={resource.id}>
         <div className="flex flex-col border-2 rounded-md border-black w-80 h-96 p-6">
           <h3>{resource.title}</h3>

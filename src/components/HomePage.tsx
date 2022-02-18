@@ -3,15 +3,44 @@ import { NavLink } from "react-router-dom";
 
 const HomePage: React.FC = () => {
   return (
-    <div>
-      <div>
-        <h2>Welcome to WebGuide!</h2>
+    <section className="flex items-center my-16 gap-8">
+      <div className="flex flex-col gap-8 w-1/2">
+        <div className="flex flex-col gap-4">
+          <h3 className="uppercase text-xl">
+            Welcome to <span className="text-violet-500">WebGuide</span>
+          </h3>
+          <h2 className="text-3xl">
+            A repository for the best web development resources
+          </h2>
+          <p>
+            WebGuide is a simple way to have all of the best resources for web
+            developers in one place. It's free, easily accessible and always
+            up-to-date
+          </p>
+        </div>
+        <div className="flex gap-6 justify-center">
+          <NavLink
+            to="/theguide"
+            className="bg-violet-500 border-2 border-violet-500 rounded-full py-2 px-8 text-white hover:bg-violet-600 hover:border-violet-600"
+          >
+            The Guide
+          </NavLink>
+          <NavLink
+            to="/brettsmith-portfolio"
+            className="border-2 text-violet-500 border-violet-500 rounded-full py-2 px-8 hover:text-white hover:bg-violet-500"
+          >
+            My Portfolio
+          </NavLink>
+        </div>
       </div>
-      <div>
-        <NavLink to="/theguide">The Guide</NavLink>
-        <NavLink to="/brettsmith-portfolio">My Portfolio</NavLink>
+      <div className="w-1/2 flex justify-center">
+        <img
+          src="src/assets/homepage/buildingblocks.svg"
+          alt="webguide helps developers build!"
+          className="w-96 h-96"
+        />
       </div>
-    </div>
+    </section>
   );
 };
 
