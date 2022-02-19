@@ -1,17 +1,16 @@
 import React, { useState, useRef } from "react";
 import Resources from "./resources/Resources";
-import { Show } from "../../types";
 
 const TheGuide: React.FC = () => {
   const [show, setShow] = useState<string>("cssHelpers");
-  const cssHelpersRef = useRef();
-  const iconsRef = useRef();
-  const illustrationsRef = useRef();
-  const animationsRef = useRef();
-  const chartsRef = useRef();
-  const imagesRef = useRef();
+  const cssHelpersRef = useRef<HTMLButtonElement>(null);
+  const iconsRef = useRef<HTMLButtonElement>(null);
+  const illustrationsRef = useRef<HTMLButtonElement>(null);
+  const animationsRef = useRef<HTMLButtonElement>(null);
+  const chartsRef = useRef<HTMLButtonElement>(null);
+  const imagesRef = useRef<HTMLButtonElement>(null);
 
-  const showResource = (e) => {
+  const showResource = (e: React.MouseEvent<HTMLButtonElement>) => {
     switch (e.target) {
       case cssHelpersRef.current:
         setShow("cssHelpers");

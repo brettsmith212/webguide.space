@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../supabaseClient";
 
-const Resources = ({ show }) => {
+interface Props {
+  show: string;
+}
+
+const Resources: React.FC<Props> = ({ show }) => {
   const [resources, setResources] = useState<any[]>();
   const [dataArr, setDataArr] = useState<any[]>([
     {
