@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { supabase } from "../../supabaseClient";
 
-const AddResource = () => {
+const AddResource: React.FC = () => {
   const [values, setValues] = useState({
     category: "",
     title: "",
@@ -22,7 +22,14 @@ const AddResource = () => {
     e.preventDefault();
     const { data, error } = await supabase.from("resources").insert([
       {
+        category: values.category,
         title: values.title,
+        image: values.image,
+        subtitle: values.subtitle,
+        description: values.description,
+        replit: values.replit,
+        blog: values.blog,
+        url: values.url,
       },
     ]);
     if (data) {
@@ -45,6 +52,16 @@ const AddResource = () => {
   return (
     <div>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <label>
+          Category
+          <input
+            className="ml-4 p-1 border border-black rounded-md w-72"
+            type="text"
+            onChange={handleChange}
+            value={values.category}
+            name="category"
+          />
+        </label>
         <label>
           Title
           <input

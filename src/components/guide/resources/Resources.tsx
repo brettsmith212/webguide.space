@@ -32,7 +32,7 @@ const Resources: React.FC<Props> = ({ show }) => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [show]);
 
   useEffect(() => {
     const filteredResources = dataArr.filter(

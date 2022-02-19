@@ -14,9 +14,11 @@ const Navbar: React.FC = () => {
     if (user) {
       console.log(user);
       setLoggedIn(true);
+      return user;
     }
     if (error) {
       console.error(error);
+      return error;
     }
   }
 
@@ -30,7 +32,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const user = supabase.auth.user();
-    console.log(user);
+    // console.log(user);
     if (user) {
       setUser(user);
       setLoggedIn(true);
