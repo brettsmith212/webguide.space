@@ -6,6 +6,8 @@ import TheGuide from "./components/guide/TheGuide";
 import Portfolio from "./components/portfolio/Portfolio";
 import Blog from "./components/blog/Blog";
 
+// inspiration site: https://uvodo.com/?ref=land-book.com
+
 const App: React.FC = () => {
   return (
     <main className="mx-16 font-poppins">
