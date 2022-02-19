@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
   }, [loggedIn]);
 
   return (
-    <nav className="flex justify-between my-8">
+    <nav className="flex justify-between py-8 ">
       <div>
         <NavLink to="/" className="text-2xl hover:text-violet-500">
           WebGuide

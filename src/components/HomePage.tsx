@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const HomePage: React.FC = () => {
   return (
-    <section className="flex items-center my-16 gap-8">
+    <section className="flex items-center my-16 gap-8 bg-blob-haikei bg-cover">
       <div className="flex flex-col gap-8 w-1/2">
         <div className="flex flex-col gap-4">
           <h3 className="uppercase text-xl">

@@ -23,14 +23,14 @@ const TheGuide: React.FC = () => {
 
   return (
     <section>
-      <div className="flex justify-center my-8">
-        <h1 className="text-2xl">Welcome to The Guide</h1>
+      <div className="flex justify-center items-center my-8 bg-theguide-haikei bg-cover bg-center h-80 rounded-full">
+        <h1 className="text-5xl font-bold text-white">Welcome to The Guide</h1>
       </div>
       {loggedIn && (
         <div className="flex justify-end">
           {showAddResource ? (
             <button
-              className="bg-violet-500 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-8 text-white hover:bg-violet-600 hover:border-violet-600"
+              className="bg-violet-200 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-8 text-white hover:bg-violet-600 hover:border-violet-600"
               onClick={handleShowAddResource}
             >
               Close
@@ -48,8 +48,10 @@ const TheGuide: React.FC = () => {
       <div className="flex justify-center">
         {showAddResource && <AddResource />}
       </div>
-      <div className="flex flex-col items-center my-16 gap-4">
-        <h2 className="text-xl">Categories</h2>
+      <div className="flex flex-col items-center my-20 gap-12">
+        <h2 className="text-3xl text-violet-800">
+          What are you looking for today?
+        </h2>
         <div className="flex flex-wrap gap-4 my-4 items-center justify-center">
           <Categories setShow={setShow} />
         </div>

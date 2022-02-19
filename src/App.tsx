@@ -10,7 +10,7 @@ import Blog from "./components/blog/Blog";
 
 const App: React.FC = () => {
   return (
-    <main className="mx-16 font-poppins">
+    <main className="mx-16 font-poppins ">
       <Router>
         <Navbar />
 
