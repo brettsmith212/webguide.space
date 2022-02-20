@@ -30,7 +30,7 @@ const TheGuide: React.FC = () => {
         <div className="flex justify-end">
           {showAddResource ? (
             <button
-              className="bg-violet-200 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-8 text-white hover:bg-violet-600 hover:border-violet-600"
+              className="bg-violet-500 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-8 text-white hover:bg-violet-600 hover:border-violet-600"
               onClick={handleShowAddResource}
             >
               Close
@@ -50,10 +50,10 @@ const TheGuide: React.FC = () => {
       </div>
       <div className="flex flex-col items-center my-20 gap-12">
         <h2 className="text-3xl text-violet-800">
-          What are you looking for today?
+          What are you building today?
         </h2>
         <div className="flex flex-wrap gap-4 my-4 items-center justify-center">
-          <Categories setShow={setShow} />
+          <Categories setShow={setShow} show={show} />
         </div>
       </div>
       <div className="flex flex-col mb-16">

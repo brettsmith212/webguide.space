@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../supabaseClient";
+import {
+  cssHelpers,
+  icons,
+  animations,
+  illustrations,
+  charts,
+  images,
+} from "../../../types";
 
 interface Props {
   show: string;
 }
 
 const Resources: React.FC<Props> = ({ show }) => {
+  const [categoryTitle, setCategoryTitle] = useState("cssHelpers");
   const [resources, setResources] = useState<any[]>();
+  const [loading, setLoading] = useState<boolean>(false);
   const [dataArr, setDataArr] = useState<any[]>([
     {
       id: 0,
@@ -17,7 +27,6 @@ const Resources: React.FC<Props> = ({ show }) => {
       url: "/",
     },
   ]);
-  const [loading, setLoading] = useState<boolean>(false);
 
   const getData = async () => {
     setLoading(true);
@@ -53,11 +62,34 @@ const Resources: React.FC<Props> = ({ show }) => {
       </a>
     ));
     setResources(resourcesArr);
+
+    switch (show) {
+      case cssHelpers:
+        setCategoryTitle("CSS Helpers");
+        break;
+      case icons:
+        setCategoryTitle("Icons");
+        break;
+      case illustrations:
+        setCategoryTitle("Illustrations");
+        break;
+      case animations:
+        setCategoryTitle("Animations");
+        break;
+      case charts:
+        setCategoryTitle("Charts");
+        break;
+      case images:
+        setCategoryTitle("Images");
+        break;
+    }
   }, [dataArr, show]);
 
   return (
-    <div className="flex flex-col justify-center gap-4">
-      <h2 className="text-center text-xl">{show}</h2>
+    <div className="flex flex-col justify-center items-center gap-12">
+      <h2 className="text-center text-2xl text-violet-700 bg-white rounded-full py-2 px-32 w-fit">
+        {categoryTitle}
+      </h2>
       <div className="flex flex-wrap justify-evenly items-center gap-4">
         {!loading ? resources : <p>Loading Resouces</p>}
       </div>

@@ -14,3 +14,10 @@ export interface Show {
   charts: boolean;
   images: boolean;
 }
+
+export const cssHelpers = "cssHelpers";
+export const icons = "icons";
+export const illustrations = "illustrations";
+export const animations = "animations";
+export const charts = "charts";
+export const images = "images";
