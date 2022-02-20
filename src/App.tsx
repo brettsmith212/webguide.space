@@ -5,6 +5,7 @@ import HomePage from "./components/HomePage";
 import TheGuide from "./components/guide/TheGuide";
 import Portfolio from "./components/portfolio/Portfolio";
 import Blog from "./components/blog/Blog";
+import Footer from "./components/Footer";
 
 // inspiration site: https://uvodo.com/?ref=land-book.com
 
@@ -20,6 +21,8 @@ const App: React.FC = () => {
           <Route path="/brettsmith-portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
         </Routes>
+
+        <Footer />
       </Router>
     </main>
   );
