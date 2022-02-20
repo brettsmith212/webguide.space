@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Resources from "./resources/Resources";
-import CssHelpersCategory from "./categories/CssHelpersCategory";
+import Categories from "./categories/Categories";
 import AddResource from "./AddResource";
 import { supabase } from "../../supabaseClient";
 
@@ -53,7 +53,7 @@ const TheGuide: React.FC = () => {
           What are you building today?
         </h2>
         <div className="flex flex-wrap gap-4 my-4 items-center justify-center">
-          <CssHelpersCategory setShow={setShow} show={show} />
+          <Categories setShow={setShow} show={show} />
         </div>
       </div>
       <div className="flex flex-col mb-16">

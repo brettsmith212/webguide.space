@@ -21,3 +21,7 @@ export const illustrations = "illustrations";
 export const animations = "animations";
 export const charts = "charts";
 export const images = "images";
+export const inspiration = "inspiration";
+export const learning = "learning";
+export const cheatsheets = "cheatsheets";
+export const web3 = "web3";

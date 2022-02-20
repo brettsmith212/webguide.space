@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { supabase } from "../supabaseClient";
+
+const pathHome = "/";
+const pathGuide = "/theguide";
+const pathBlog = "/blog";
+const pathPortfolio = "/brettsmith-portfolio";
+
+const active = "text-violet-500";
+const inactive = "hover:text-violet-500";
 
 const Navbar: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [user, setUser] = useState<object>({});
+  const location = useLocation();
+  console.log(location.pathname);
 
   async function signInWithGoogle() {
     const { user, session, error } = await supabase.auth.signIn({
@@ -32,7 +42,6 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const user = supabase.auth.user();
-    // console.log(user);
     if (user) {
       setUser(user);
       setLoggedIn(true);
@@ -47,16 +56,30 @@ const Navbar: React.FC = () => {
         </NavLink>
       </div>
       <div className="flex gap-8 text-xl items-center">
-        <NavLink to="/" className="hover:text-violet-500">
+        <NavLink
+          to="/"
+          className={`${location.pathname === pathHome ? active : inactive}`}
+        >
           Home
         </NavLink>
-        <NavLink to="/theguide" className="hover:text-violet-500">
+        <NavLink
+          to="/theguide"
+          className={`${location.pathname === pathGuide ? active : inactive}`}
+        >
           The Guide
         </NavLink>
-        <NavLink to="/blog" className="hover:text-violet-500">
+        <NavLink
+          to="/blog"
+          className={`${location.pathname === pathBlog ? active : inactive}`}
+        >
           Blog
         </NavLink>
-        <NavLink to="/brettsmith-portfolio" className="hover:text-violet-500">
+        <NavLink
+          to="/brettsmith-portfolio"
+          className={`${
+            location.pathname === pathPortfolio ? active : inactive
+          }`}
+        >
           Portfolio
         </NavLink>
         {!loggedIn && (

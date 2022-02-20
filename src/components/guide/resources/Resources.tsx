@@ -7,6 +7,10 @@ import {
   illustrations,
   charts,
   images,
+  inspiration,
+  learning,
+  cheatsheets,
+  web3,
 } from "../../../types";
 
 interface Props {
@@ -49,7 +53,7 @@ const Resources: React.FC<Props> = ({ show }) => {
     );
     const resourcesArr = filteredResources.map((resource) => (
       <a href={resource.url} target="_blank" key={resource.id}>
-        <div className="flex flex-col items-center gap-4 text-center rounded-md w-80 h-96 p-6 shadow-lg hover:scale-105 hover:bg-violet-50">
+        <div className="flex flex-col items-center gap-4 mb-4 text-center rounded-md w-80 h-96 p-6 shadow-lg hover:scale-105 hover:bg-violet-50">
           <h3 className="text-xl">{resource.title}</h3>
           <img
             className="h-32 rounded-md"
@@ -81,6 +85,18 @@ const Resources: React.FC<Props> = ({ show }) => {
         break;
       case images:
         setCategoryTitle("Images");
+        break;
+      case inspiration:
+        setCategoryTitle("Inspiration");
+        break;
+      case learning:
+        setCategoryTitle("Inspiration");
+        break;
+      case cheatsheets:
+        setCategoryTitle("CheatSheets");
+        break;
+      case web3:
+        setCategoryTitle("Web 3");
         break;
     }
   }, [dataArr, show]);
