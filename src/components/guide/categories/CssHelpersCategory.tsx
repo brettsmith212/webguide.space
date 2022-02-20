@@ -6,14 +6,14 @@ import {
   animations,
   charts,
   images,
-} from "../../types";
+} from "../../../types";
 
 interface Props {
   show: string;
   setShow: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Categories: React.FC<Props> = ({ show, setShow }) => {
+const CssHelpersCategory: React.FC<Props> = ({ show, setShow }) => {
   const cssHelpersRef = useRef<HTMLButtonElement>(null);
   const iconsRef = useRef<HTMLButtonElement>(null);
   const illustrationsRef = useRef<HTMLButtonElement>(null);
@@ -108,4 +108,4 @@ const Categories: React.FC<Props> = ({ show, setShow }) => {
   );
 };
 
-export default Categories;
+export default CssHelpersCategory;
