@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
             className="bg-violet-500 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-6 text-white hover:bg-violet-600 hover:border-violet-600 pb-2"
             onClick={signInWithGoogle}
           >
-            Google Login
+            Login
           </button>
         )}
         {loggedIn && (
