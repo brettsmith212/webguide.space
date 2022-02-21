@@ -15,7 +15,7 @@ const Footer = () => {
         <NavLink to="/blog" className="hover:text-violet-500">
           Blog
         </NavLink>
-        <NavLink to="portfolio" className="hover:text-violet-500">
+        <NavLink to="/brettsmith-portfolio" className="hover:text-violet-500">
           Portfolio
         </NavLink>
         <p className="text-sm">©WebGuide 2022 </p>

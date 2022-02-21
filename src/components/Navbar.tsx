@@ -14,7 +14,6 @@ const Navbar: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const [user, setUser] = useState<object>({});
   const location = useLocation();
-  console.log(location.pathname);
 
   async function signInWithGoogle() {
     const { user, session, error } = await supabase.auth.signIn({
@@ -49,7 +48,7 @@ const Navbar: React.FC = () => {
   }, [loggedIn]);
 
   return (
-    <nav className="flex justify-between py-8 ">
+    <nav className="flex justify-between items-center py-8 ">
       <div>
         <NavLink to="/" className="text-2xl hover:text-violet-500">
           WebGuide
