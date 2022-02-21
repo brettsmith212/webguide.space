@@ -90,7 +90,7 @@ const Resources: React.FC<Props> = ({ show }) => {
         setCategoryTitle("Inspiration");
         break;
       case learning:
-        setCategoryTitle("Inspiration");
+        setCategoryTitle("Learning");
         break;
       case cheatsheets:
         setCategoryTitle("CheatSheets");

@@ -11,41 +11,41 @@ const active = "text-violet-500";
 const inactive = "hover:text-violet-500";
 
 const Navbar: React.FC = () => {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const [user, setUser] = useState<object>({});
+  // const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  // const [user, setUser] = useState<object>({});
   const location = useLocation();
 
-  async function signInWithGoogle() {
-    const { user, session, error } = await supabase.auth.signIn({
-      provider: "google",
-    });
+  // async function signInWithGoogle() {
+  //   const { user, session, error } = await supabase.auth.signIn({
+  //     provider: "google",
+  //   });
 
-    if (user) {
-      console.log(user);
-      setLoggedIn(true);
-      return user;
-    }
-    if (error) {
-      console.error(error);
-      return error;
-    }
-  }
+  //   if (user) {
+  //     console.log(user);
+  //     setLoggedIn(true);
+  //     return user;
+  //   }
+  //   if (error) {
+  //     console.error(error);
+  //     return error;
+  //   }
+  // }
 
-  async function signout() {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error(error);
-    }
-    setLoggedIn(false);
-  }
+  // async function signout() {
+  //   const { error } = await supabase.auth.signOut();
+  //   if (error) {
+  //     console.error(error);
+  //   }
+  //   setLoggedIn(false);
+  // }
 
-  useEffect(() => {
-    const user = supabase.auth.user();
-    if (user) {
-      setUser(user);
-      setLoggedIn(true);
-    }
-  }, [loggedIn]);
+  // useEffect(() => {
+  //   const user = supabase.auth.user();
+  //   if (user) {
+  //     setUser(user);
+  //     setLoggedIn(true);
+  //   }
+  // }, [loggedIn]);
 
   return (
     <nav className="flex justify-between items-center py-8 ">
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
         >
           Portfolio
         </NavLink>
-        {!loggedIn && (
+        {/* {!loggedIn && (
           <button
             className="bg-violet-500 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-6 text-white hover:bg-violet-600 hover:border-violet-600 pb-2"
             onClick={signInWithGoogle}
@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
           >
             Logout
           </button>
-        )}
+        )} */}
       </div>
     </nav>
   );
