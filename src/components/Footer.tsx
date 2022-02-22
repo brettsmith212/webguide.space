@@ -55,7 +55,7 @@ const Footer = () => {
           Portfolio
         </NavLink>
 
-        {!loggedIn && (
+        {/* {!loggedIn && (
           <button
             className=" hover:text-violet-600 pb-2"
             onClick={signInWithGoogle}
@@ -67,7 +67,7 @@ const Footer = () => {
           <button className=" hover:text-violet-600 pb-2" onClick={signout}>
             Beta - Logout
           </button>
-        )}
+        )} */}
         <p className="text-sm my-8">©WebGuide 2022 </p>
       </div>
     </div>
