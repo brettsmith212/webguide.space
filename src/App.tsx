@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
-    <main className="mx-16 font-poppins ">
+    <main className="md:mx-16 mx-8 font-poppins ">
       <Router>
         <Navbar />
 
