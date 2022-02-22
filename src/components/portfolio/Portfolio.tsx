@@ -34,7 +34,7 @@ const Portfolio: React.FC = () => {
     const proj = dataArr.map((project) => {
       return (
         <div
-          className="flex flex-col items-center w-96 p-8 gap-6 shadow-xl rounded-md"
+          className="flex flex-col items-center w-96 p-8 gap-8 shadow-xl rounded-md"
           key={project.id}
         >
           <h2 className="text-center text-2xl">{project.title}</h2>
@@ -45,7 +45,7 @@ const Portfolio: React.FC = () => {
               alt={project.title}
             />
           </a>
-          <p>{project.description}</p>
+          <p className="text-sm">{project.description}</p>
           <a
             href={project.github_link}
             target="_blank"
@@ -58,21 +58,21 @@ const Portfolio: React.FC = () => {
     });
 
     setProjects(proj);
-  }, []);
+  }, [dataArr]);
 
   return (
     <section className="my-16">
-      <div className="flex justify-center items-center">
-        <h1 className="text-4xl text-violet-700">Portfolio</h1>
+      <div className="flex justify-center items-center my-4">
+        <h1 className="text-4xl">My Porfolio</h1>
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center my-4">
         <div className="w-1/2 p-8 flex flex-col gap-4">
           <h2 className="text-2xl ">Hi, I'm Brett!</h2>
           <p>
             A little about me… I am a web developer skilled in HTML, CSS,
-            JavaScript, React and Firebase. I have built some cool stuff, so
-            check out my projects! If you want to see more be sure to checkout
-            my{" "}
+            JavaScript, TypeScript, React, Node, Express, Supabase and Firebase.
+            I have built some cool stuff, so check out my projects! If you want
+            to see more be sure to checkout my{" "}
             <a
               className="text-violet-700"
               target="_blank"
@@ -81,6 +81,10 @@ const Portfolio: React.FC = () => {
               github
             </a>{" "}
             as well.
+          </p>
+          <p>
+            I'm currently open to work as a front end or full stack software
+            engineer.
           </p>
           <p>
             The best place to reach me is Twitter{" "}
