@@ -65,10 +65,19 @@ const Portfolio: React.FC = () => {
       <div className="flex justify-center items-center my-4">
         <h1 className="text-4xl">My Porfolio</h1>
       </div>
-      <div className="flex justify-center items-center my-4">
-        <div className="w-1/2 p-8 flex flex-col gap-4">
-          <h2 className="text-2xl ">Hi, I'm Brett!</h2>
-          <p>
+      <div className="flex md:flex-row flex-col justify-center items-center my-4">
+        <div className="md:w-1/2 flex justify-center p-8">
+          <img
+            className="rounded-md"
+            src="src/assets/portfolio/profilepic.jpeg"
+            alt="Brett Smith"
+          />
+        </div>
+        <div className="md:w-1/2 p-8 flex flex-col gap-4">
+          <h2 className="text-3xl md:text-2xl lg:text-3xl xl:text-5xl">
+            Hi, I'm Brett!
+          </h2>
+          <p className="text-xl md:text-base lg:text-xl xl:text-2xl">
             A little about me… I am a web developer skilled in HTML, CSS,
             JavaScript, TypeScript, React, Node, Express, Supabase and Firebase.
             I have built some cool stuff, so check out my projects! If you want
@@ -82,11 +91,11 @@ const Portfolio: React.FC = () => {
             </a>{" "}
             as well.
           </p>
-          <p>
+          <p className="text-xl md:text-base lg:text-xl xl:text-2xl">
             I'm currently open to work as a front end or full stack software
             engineer.
           </p>
-          <p>
+          <p className="text-xl md:text-base lg:text-xl xl:text-2xl">
             The best place to reach me is Twitter{" "}
             <a
               href="https://twitter.com/brettsmth"
@@ -105,13 +114,6 @@ const Portfolio: React.FC = () => {
             </a>{" "}
             or email brettsmith212@gmail.com.{" "}
           </p>
-        </div>
-        <div className="w-1/2 flex justify-center p-8">
-          <img
-            className="w-96 h-96 rounded-md"
-            src="src/assets/portfolio/profilepic.jpeg"
-            alt="Brett Smith"
-          />
         </div>
       </div>
       <div className="flex flex-wrap justify-evenly gap-8">
