@@ -24,7 +24,9 @@ const TheGuide: React.FC = () => {
   return (
     <section>
       <div className="flex justify-center items-center my-8 bg-theguide-haikei bg-cover bg-center h-80 rounded-full">
-        <h1 className="text-5xl font-bold text-white">Welcome to The Guide</h1>
+        <h1 className="md:text-5xl text-3xl font-bold text-white text-center">
+          Welcome to The Guide
+        </h1>
       </div>
       {loggedIn && (
         <div className="flex justify-end">
@@ -49,10 +51,10 @@ const TheGuide: React.FC = () => {
         {showAddResource && <AddResource />}
       </div>
       <div className="flex flex-col items-center my-20 gap-12">
-        <h2 className="text-3xl text-violet-800">
+        <h2 className="md:text-3xl text-2xl text-violet-800">
           What are you building today?
         </h2>
-        <div className="flex flex-wrap gap-4 my-4 items-center justify-center">
+        <div className="flex md:flex-wrap md:flex-row flex-col gap-4 my-4 items-center justify-center w-full md:w-auto">
           <Categories setShow={setShow} show={show} />
         </div>
       </div>

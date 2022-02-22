@@ -13,7 +13,8 @@ import {
 } from "../../../types";
 
 // CATEGORY BUTTON STYLING
-const all = "border-2 border-violet-500 rounded-full py-2 px-8 mb-4";
+const all =
+  "border-2 border-violet-500 rounded-full md:py-2 md:text-base text-xl py-4 px-8 mb-4 w-full md:w-auto";
 const active = "bg-white text-violet-700";
 const inactive =
   "bg-violet-500 text-white shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600";
