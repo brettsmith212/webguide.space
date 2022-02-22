@@ -7,8 +7,7 @@ const HomePage: React.FC = () => {
       <div className="flex flex-col gap-8 md:w-1/2">
         <div className="flex flex-col gap-4">
           <h3 className="uppercase text-xl">
-            Welcome to{" "}
-            <span className="text-violet-500 lg:text-red-300">WebGuide</span>
+            Welcome to <span className="text-violet-500">WebGuide</span>
           </h3>
           <h2 className="text-3xl">
             A repository for the best web development resources
