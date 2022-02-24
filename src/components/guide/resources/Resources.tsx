@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../../auth-context";
-import { supabase } from "../../../supabaseClient";
 import {
   allResources,
   cssHelpers,
@@ -22,17 +21,7 @@ interface Props {
 const Resources: React.FC<Props> = ({ show }) => {
   const [categoryTitle, setCategoryTitle] = useState(allResources);
   const [resources, setResources] = useState<any[]>();
-  // const [loading, setLoading] = useState<boolean>(false);
-  // const [dataArr, setDataArr] = useState<any[]>([
-  //   {
-  //     id: 0,
-  //     title: null,
-  //     image: null,
-  //     subtitle: null,
-  //     description: null,
-  //     url: "/",
-  //   },
-  // ]);
+
   const ctx = useContext(AuthContext);
 
   useEffect(() => {

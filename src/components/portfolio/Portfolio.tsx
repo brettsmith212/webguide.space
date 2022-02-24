@@ -74,10 +74,8 @@ const Portfolio: React.FC = () => {
           />
         </div>
         <div className="md:w-1/2 p-8 flex flex-col gap-4">
-          <h2 className="text-3xl md:text-2xl lg:text-3xl xl:text-5xl">
-            Hi, I'm Brett!
-          </h2>
-          <p className="text-xl md:text-base lg:text-xl xl:text-2xl">
+          <h2 className="text-3xl md:text-2xl lg:text-3xl">Hi, I'm Brett!</h2>
+          <p className="text-xl md:text-base lg:text-xl">
             A little about me… I am a web developer skilled in HTML, CSS,
             JavaScript, TypeScript, React, Node, Express, Supabase and Firebase.
             I have built some cool stuff, so check out my projects! If you want
@@ -91,11 +89,11 @@ const Portfolio: React.FC = () => {
             </a>{" "}
             as well.
           </p>
-          <p className="text-xl md:text-base lg:text-xl xl:text-2xl">
+          <p className="text-xl md:text-base lg:text-xl">
             I'm currently open to work as a front end or full stack software
             engineer.
           </p>
-          <p className="text-xl md:text-base lg:text-xl xl:text-2xl">
+          <p className="text-xl md:text-base lg:text-xl">
             The best place to reach me is Twitter{" "}
             <a
               href="https://twitter.com/brettsmth"

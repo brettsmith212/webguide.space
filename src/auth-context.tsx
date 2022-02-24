@@ -19,7 +19,6 @@ export const AuthContextProvider = (props: Props) => {
   const [resources, setResources] = useState<any[]>([]);
 
   const getResourceTable = async () => {
-    console.log("Supabase pinged for resource table");
     const { data, error } = await supabase.from("resources").select("*");
     if (error) {
       console.log("ERROR", error);
