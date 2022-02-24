@@ -15,6 +15,7 @@ export interface Show {
   images: boolean;
 }
 
+export const allResources = "all";
 export const cssHelpers = "cssHelpers";
 export const icons = "icons";
 export const illustrations = "illustrations";

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import AuthContext from "../../../auth-context";
 import { supabase } from "../../../supabaseClient";
 import {
+  allResources,
   cssHelpers,
   icons,
   animations,
@@ -18,39 +20,31 @@ interface Props {
 }
 
 const Resources: React.FC<Props> = ({ show }) => {
-  const [categoryTitle, setCategoryTitle] = useState("cssHelpers");
+  const [categoryTitle, setCategoryTitle] = useState(allResources);
   const [resources, setResources] = useState<any[]>();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [dataArr, setDataArr] = useState<any[]>([
-    {
-      id: 0,
-      title: null,
-      image: null,
-      subtitle: null,
-      description: null,
-      url: "/",
-    },
-  ]);
+  // const [loading, setLoading] = useState<boolean>(false);
+  // const [dataArr, setDataArr] = useState<any[]>([
+  //   {
+  //     id: 0,
+  //     title: null,
+  //     image: null,
+  //     subtitle: null,
+  //     description: null,
+  //     url: "/",
+  //   },
+  // ]);
+  const ctx = useContext(AuthContext);
 
-  const getData = async () => {
-    setLoading(true);
-    const { data, error } = await supabase.from("resources").select("*");
-    if (error) {
-      console.log("ERROR", error);
-    } else if (data) {
-      setDataArr(data);
+  useEffect(() => {
+    let filteredResources = [];
+
+    if (show === "all") {
+      filteredResources = ctx.resourcesTable;
+    } else {
+      filteredResources = ctx.resourcesTable.filter(
+        (resource) => resource.category === show
+      );
     }
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    getData();
-  }, [show]);
-
-  useEffect(() => {
-    const filteredResources = dataArr.filter(
-      (resource) => resource.category === show
-    );
     const resourcesArr = filteredResources.map((resource) => (
       <a href={resource.url} target="_blank" key={resource.id}>
         <div className="flex flex-col items-center gap-4 mb-6 text-center rounded-md md:w-80 w-96 md:h-96 min-h-96 h-fit p-6 shadow-lg hover:scale-105 hover:bg-violet-50">
@@ -70,6 +64,9 @@ const Resources: React.FC<Props> = ({ show }) => {
     setResources(resourcesArr);
 
     switch (show) {
+      case allResources:
+        setCategoryTitle("All Resources");
+        break;
       case cssHelpers:
         setCategoryTitle("CSS Helpers");
         break;
@@ -101,7 +98,7 @@ const Resources: React.FC<Props> = ({ show }) => {
         setCategoryTitle("Web 3");
         break;
     }
-  }, [dataArr, show]);
+  }, [show]);
 
   return (
     <div className="flex flex-col justify-center items-center gap-12">
@@ -109,7 +106,7 @@ const Resources: React.FC<Props> = ({ show }) => {
         {categoryTitle}
       </h2>
       <div className="flex flex-wrap justify-evenly items-center gap-4">
-        {!loading ? resources : <p>Loading Resouces</p>}
+        {resources}
       </div>
     </div>
   );

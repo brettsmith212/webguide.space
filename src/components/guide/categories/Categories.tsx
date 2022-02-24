@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import {
+  allResources,
   cssHelpers,
   icons,
   illustrations,
@@ -25,6 +26,7 @@ interface Props {
 }
 
 const Categories: React.FC<Props> = ({ show, setShow }) => {
+  const allResourcesRef = useRef<HTMLButtonElement>(null);
   const cssHelpersRef = useRef<HTMLButtonElement>(null);
   const iconsRef = useRef<HTMLButtonElement>(null);
   const illustrationsRef = useRef<HTMLButtonElement>(null);
@@ -38,6 +40,9 @@ const Categories: React.FC<Props> = ({ show, setShow }) => {
 
   const showResource = (e: React.MouseEvent<HTMLButtonElement>) => {
     switch (e.target) {
+      case allResourcesRef.current:
+        setShow(allResources);
+        break;
       case cssHelpersRef.current:
         setShow(cssHelpers);
         break;
@@ -73,6 +78,13 @@ const Categories: React.FC<Props> = ({ show, setShow }) => {
 
   return (
     <>
+      <button
+        ref={allResourcesRef}
+        className={`${all} ${show === allResources ? active : inactive}`}
+        onClick={showResource}
+      >
+        All Resources
+      </button>
       <button
         ref={cssHelpersRef}
         className={`${all} ${show === cssHelpers ? active : inactive}`}

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Resources from "./resources/Resources";
 import Categories from "./categories/Categories";
-import AddResource from "./AddResource";
+import AddResource from "./resources/AddResource";
 import { supabase } from "../../supabaseClient";
+import { allResources } from "../../types";
 
 const TheGuide: React.FC = () => {
-  const [show, setShow] = useState<string>("cssHelpers");
+  const [show, setShow] = useState<string>(allResources);
   const [showAddResource, setShowAddResource] = useState<boolean>(false);
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const handleShowAddResource = () => {
