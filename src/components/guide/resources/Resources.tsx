@@ -16,9 +16,10 @@ import {
 
 interface Props {
   show: string;
+  resourcesSection: React.RefObject<HTMLDivElement>;
 }
 
-const Resources: React.FC<Props> = ({ show }) => {
+const Resources: React.FC<Props> = ({ show, resourcesSection }) => {
   const [categoryTitle, setCategoryTitle] = useState(allResources);
   const [resources, setResources] = useState<any[]>();
 
@@ -90,7 +91,10 @@ const Resources: React.FC<Props> = ({ show }) => {
   }, [show]);
 
   return (
-    <div className="flex flex-col justify-center items-center gap-12">
+    <div
+      ref={resourcesSection}
+      className="flex flex-col justify-center items-center gap-12"
+    >
       <h2 className="text-center text-2xl text-violet-700 bg-white rounded-full py-2 px-32 w-fit">
         {categoryTitle}
       </h2>

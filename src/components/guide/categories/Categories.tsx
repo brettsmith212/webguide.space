@@ -23,9 +23,10 @@ const inactive =
 interface Props {
   show: string;
   setShow: React.Dispatch<React.SetStateAction<string>>;
+  resourcesSection: React.RefObject<HTMLDivElement>;
 }
 
-const Categories: React.FC<Props> = ({ show, setShow }) => {
+const Categories: React.FC<Props> = ({ show, setShow, resourcesSection }) => {
   const allResourcesRef = useRef<HTMLButtonElement>(null);
   const cssHelpersRef = useRef<HTMLButtonElement>(null);
   const iconsRef = useRef<HTMLButtonElement>(null);
@@ -38,40 +39,58 @@ const Categories: React.FC<Props> = ({ show, setShow }) => {
   const cheatsheetsRef = useRef<HTMLButtonElement>(null);
   const web3Ref = useRef<HTMLButtonElement>(null);
 
+  const handleGoToResource = () => {
+    window.scrollTo({
+      top: resourcesSection.current?.offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   const showResource = (e: React.MouseEvent<HTMLButtonElement>) => {
     switch (e.target) {
       case allResourcesRef.current:
         setShow(allResources);
+        handleGoToResource();
         break;
       case cssHelpersRef.current:
         setShow(cssHelpers);
+        handleGoToResource();
         break;
       case iconsRef.current:
         setShow(icons);
+        handleGoToResource();
         break;
       case illustrationsRef.current:
         setShow(illustrations);
+        handleGoToResource();
         break;
       case animationsRef.current:
         setShow(animations);
+        handleGoToResource();
         break;
       case chartsRef.current:
         setShow(charts);
+        handleGoToResource();
         break;
       case imagesRef.current:
         setShow(images);
+        handleGoToResource();
         break;
       case inspirationRef.current:
         setShow(inspiration);
+        handleGoToResource();
         break;
       case learningRef.current:
         setShow(learning);
+        handleGoToResource();
         break;
       case cheatsheetsRef.current:
         setShow(cheatsheets);
+        handleGoToResource();
         break;
       case web3Ref.current:
         setShow(web3);
+        handleGoToResource();
         break;
     }
   };

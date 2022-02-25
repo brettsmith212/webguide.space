@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Resources from "./resources/Resources";
 import Categories from "./categories/Categories";
 import AddResource from "./resources/AddResource";
@@ -9,6 +9,7 @@ const TheGuide: React.FC = () => {
   const [show, setShow] = useState<string>(allResources);
   const [showAddResource, setShowAddResource] = useState<boolean>(false);
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const resourcesSection = useRef<HTMLDivElement>(null);
   const handleShowAddResource = () => {
     setShowAddResource(!showAddResource);
   };
@@ -56,11 +57,15 @@ const TheGuide: React.FC = () => {
           What are you building today?
         </h2>
         <div className="flex md:flex-wrap md:flex-row flex-col gap-4 my-4 items-center justify-center w-full md:w-auto">
-          <Categories setShow={setShow} show={show} />
+          <Categories
+            setShow={setShow}
+            show={show}
+            resourcesSection={resourcesSection}
+          />
         </div>
       </div>
       <div className="flex flex-col mb-16">
-        {show && <Resources show={show} />}
+        {show && <Resources show={show} resourcesSection={resourcesSection} />}
       </div>
     </section>
   );
