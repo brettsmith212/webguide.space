@@ -100,7 +100,7 @@ const Resources: React.FC<Props> = ({ show, resourcesSection }) => {
         setCategoryTitle("Web 3");
         break;
     }
-  }, [show, search]);
+  }, [show, search, ctx.resourcesTable]);
 
   return (
     <div
