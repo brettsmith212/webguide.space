@@ -22,8 +22,13 @@ interface Props {
 const Resources: React.FC<Props> = ({ show, resourcesSection }) => {
   const [categoryTitle, setCategoryTitle] = useState(allResources);
   const [resources, setResources] = useState<any[]>();
+  const [search, setSearch] = useState<string>("");
 
   const ctx = useContext(AuthContext);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
 
   useEffect(() => {
     let filteredResources = [];
@@ -35,6 +40,13 @@ const Resources: React.FC<Props> = ({ show, resourcesSection }) => {
         (resource) => resource.category === show
       );
     }
+
+    if (search) {
+      filteredResources = filteredResources.filter((resource) => {
+        return resource.title.toLowerCase().includes(search.toLowerCase());
+      });
+    }
+
     const resourcesArr = filteredResources.map((resource) => (
       <a href={resource.url} target="_blank" key={resource.id}>
         <div className="flex flex-col items-center gap-4 mb-6 text-center rounded-md md:w-80 w-96 md:h-96 min-h-96 h-fit p-6 shadow-lg hover:scale-105 hover:bg-violet-50">
@@ -88,7 +100,7 @@ const Resources: React.FC<Props> = ({ show, resourcesSection }) => {
         setCategoryTitle("Web 3");
         break;
     }
-  }, [show]);
+  }, [show, search]);
 
   return (
     <div
@@ -98,6 +110,14 @@ const Resources: React.FC<Props> = ({ show, resourcesSection }) => {
       <h2 className="text-center text-2xl text-violet-700 bg-white rounded-full py-2 px-32 w-fit">
         {categoryTitle}
       </h2>
+      <div className="w-full flex justify-center px-12">
+        <input
+          className="border-2 border-gray-300 rounded-md py-2 px-4 w-full"
+          type="text"
+          placeholder="Search"
+          onChange={handleSearchChange}
+        />
+      </div>
       <div className="flex flex-wrap justify-evenly items-center gap-4">
         {resources}
       </div>
