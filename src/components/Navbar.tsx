@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { supabase } from "../supabaseClient";
+import withRouter from "../hooks/withRouter"
+import ReactGA from "react-ga";
 
 const pathHome = "/";
 const pathGuide = "/theguide";
@@ -9,6 +11,8 @@ const pathPortfolio = "/brettsmith-portfolio";
 
 const active = "text-violet-500";
 const inactive = "hover:text-violet-500";
+
+ReactGA.initialize(import.meta.env.VITE_GA_TRACKING_CODE);
 
 const Navbar: React.FC = () => {
   // const [loggedIn, setLoggedIn] = useState<boolean>(false);
@@ -19,6 +23,10 @@ const Navbar: React.FC = () => {
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
   };
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  })
 
   // async function signInWithGoogle() {
   //   const { user, session, error } = await supabase.auth.signIn({
@@ -81,9 +89,8 @@ const Navbar: React.FC = () => {
           </NavLink>
           <NavLink
             to="/brettsmith-portfolio"
-            className={`${
-              location.pathname === pathPortfolio ? active : inactive
-            }`}
+            className={`${location.pathname === pathPortfolio ? active : inactive
+              }`}
           >
             Portfolio
           </NavLink>
@@ -164,4 +171,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);
