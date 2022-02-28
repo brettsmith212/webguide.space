@@ -7,6 +7,9 @@ import Portfolio from "./components/portfolio/Portfolio";
 import Blog from "./components/blog/Blog";
 import Footer from "./components/Footer";
 import AuthContext from "./auth-context";
+import ReactGA from "react-ga";
+
+ReactGA.initialize(import.meta.env.VITE_GA_TRACKING_CODE);
 
 // inspiration site: https://uvodo.com/?ref=land-book.com
 
@@ -15,6 +18,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     ctx.getResourceTable();
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
 
   return (
