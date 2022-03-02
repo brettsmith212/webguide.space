@@ -8,7 +8,6 @@ import Blog from "./components/blog/Blog";
 import Footer from "./components/Footer";
 import AuthContext from "./auth-context";
 
-
 // inspiration site: https://uvodo.com/?ref=land-book.com
 
 const App: React.FC = () => {
@@ -16,7 +15,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     ctx.getResourceTable();
-  }, []);  
+    ctx.getBlogTable();
+  }, []);
 
   return (
     <main className="md:mx-16 mx-8 font-poppins ">
