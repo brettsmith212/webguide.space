@@ -16,6 +16,7 @@ const App: React.FC = () => {
   useEffect(() => {
     ctx.getResourceTable();
     ctx.getBlogTable();
+    ctx.getPortfolioTable();
   }, []);
 
   return (

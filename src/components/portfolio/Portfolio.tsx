@@ -1,37 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { supabase } from "../../supabaseClient";
+import AuthContext from "../../auth-context";
 
 const Portfolio: React.FC = () => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [projects, setProjects] = useState<any[]>();
-  const [dataArr, setDataArr] = useState<any[]>([
-    {
-      id: 0,
-      title: "",
-      image: "",
-      description: "",
-      github_link: "",
-      project_link: "",
-    },
-  ]);
+  // const [dataArr, setDataArr] = useState<any[]>([
+  //   {
+  //     id: 0,
+  //     title: "",
+  //     image: "",
+  //     description: "",
+  //     github_link: "",
+  //     project_link: "",
+  //   },
+  // ]);
+  const ctx = useContext(AuthContext);
 
-  const getProjects = async () => {
-    setLoading(true);
-    const { data, error } = await supabase.from("projects").select("*");
-    if (error) {
-      console.log("ERROR", error);
-    } else if (data) {
-      setDataArr(data);
-    }
-    setLoading(false);
-  };
+  // const getProjects = async () => {
+  //   setLoading(true);
+  //   const { data, error } = await supabase.from("projects").select("*");
+  //   if (error) {
+  //     console.log("ERROR", error);
+  //   } else if (data) {
+  //     setDataArr(data);
+  //   }
+  //   setLoading(false);
+  // };
+
+  // useEffect(() => {
+  //   getProjects();
+  // }, []);
 
   useEffect(() => {
-    getProjects();
-  }, []);
-
-  useEffect(() => {
-    const proj = dataArr.map((project) => {
+    // const proj = dataArr.map((project) => {
+    const proj = ctx.portfolioTable.map((project) => {
       return (
         <div
           className="flex flex-col items-center w-96 p-8 gap-8 shadow-xl rounded-md"
@@ -58,7 +61,7 @@ const Portfolio: React.FC = () => {
     });
 
     setProjects(proj);
-  }, [dataArr]);
+  }, [ctx.portfolioTable]);
 
   return (
     <section className="my-16">
@@ -115,7 +118,7 @@ const Portfolio: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-wrap justify-evenly gap-8">
-        {!loading ? projects : <p>Loading Projects</p>}
+        {projects ? projects : <p>Loading Projects</p>}
       </div>
     </section>
   );

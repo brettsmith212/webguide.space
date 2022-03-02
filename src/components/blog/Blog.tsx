@@ -17,7 +17,7 @@ const Blog: React.FC = () => {
     ));
 
     setBlog(blogArr);
-  }, []);
+  }, [ctx.blogTable]);
 
   return (
     <div className="flex flex-col justify-center items-center my-36">
