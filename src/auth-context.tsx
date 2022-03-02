@@ -12,6 +12,8 @@ interface AppContextInterface {
   getResourceTable: () => void;
   getBlogTable: () => void;
   getPortfolioTable: () => void;
+  orderByAsc: boolean;
+  setOrderByAsc: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const AuthContext = React.createContext<AppContextInterface>({
@@ -21,12 +23,15 @@ const AuthContext = React.createContext<AppContextInterface>({
   getResourceTable: () => {},
   getBlogTable: () => {},
   getPortfolioTable: () => {},
+  orderByAsc: true,
+  setOrderByAsc: () => {},
 });
 
 export const AuthContextProvider = (props: Props) => {
   const [resources, setResources] = useState<any[]>([]);
   const [blog, setBlog] = useState<any[]>([]);
   const [portfolio, setPortfolio] = useState<any[]>([]);
+  const [orderByAsc, setOrderByAsc] = useState<boolean>(true);
 
   const getResourceTable = async () => {
     const { data, error } = await supabase.from("resources").select("*");
@@ -38,7 +43,10 @@ export const AuthContextProvider = (props: Props) => {
   };
 
   const getBlogTable = async () => {
-    const { data, error } = await supabase.from("blog").select("*");
+    const { data, error } = await supabase
+      .from("blog")
+      .select("*")
+      .order("date", { ascending: orderByAsc });
     if (error) {
       console.log("ERROR", error);
     } else if (data) {
@@ -64,6 +72,8 @@ export const AuthContextProvider = (props: Props) => {
         getBlogTable: getBlogTable,
         portfolioTable: portfolio,
         getPortfolioTable: getPortfolioTable,
+        orderByAsc: orderByAsc,
+        setOrderByAsc: setOrderByAsc,
       }}
     >
       {props.children}

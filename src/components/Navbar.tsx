@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { supabase } from "../supabaseClient";
-import withRouter from "../hooks/withRouter"
+import withRouter from "../hooks/withRouter";
 import ReactGA from "react-ga";
 
 const pathHome = "/";
@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
-  })
+  });
 
   // async function signInWithGoogle() {
   //   const { user, session, error } = await supabase.auth.signIn({
@@ -89,8 +89,9 @@ const Navbar: React.FC = () => {
           </NavLink>
           <NavLink
             to="/brettsmith-portfolio"
-            className={`${location.pathname === pathPortfolio ? active : inactive
-              }`}
+            className={`${
+              location.pathname === pathPortfolio ? active : inactive
+            }`}
           >
             Portfolio
           </NavLink>
@@ -117,7 +118,7 @@ const Navbar: React.FC = () => {
             <button onClick={handleShowMenu}>
               <img
                 className="w-6 h-6"
-                src="src/assets/portfolio/hamburger.svg"
+                src="../src/assets/portfolio/hamburger.svg"
                 alt="menu icon"
               />
             </button>
@@ -125,7 +126,7 @@ const Navbar: React.FC = () => {
             <button onClick={handleShowMenu}>
               <img
                 className="w-6 h-6"
-                src="src/assets/portfolio/cancel.svg"
+                src="../src/assets/portfolio/cancel.svg"
                 alt="menu icon"
               />
             </button>

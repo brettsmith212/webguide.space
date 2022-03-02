@@ -16,9 +16,12 @@ const App: React.FC = () => {
 
   useEffect(() => {
     ctx.getResourceTable();
-    ctx.getBlogTable();
     ctx.getPortfolioTable();
   }, []);
+
+  useEffect(() => {
+    ctx.getBlogTable();
+  }, [ctx.orderByAsc]);
 
   return (
     <main className="md:mx-16 mx-8 font-poppins ">
