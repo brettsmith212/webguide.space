@@ -5,6 +5,7 @@ import HomePage from "./components/HomePage";
 import TheGuide from "./components/guide/TheGuide";
 import Portfolio from "./components/portfolio/Portfolio";
 import Blog from "./components/blog/Blog";
+import BlogPost from "./components/blog/BlogPost";
 import Footer from "./components/Footer";
 import AuthContext from "./auth-context";
 
@@ -29,6 +30,7 @@ const App: React.FC = () => {
           <Route path="/theguide" element={<TheGuide />} />
           <Route path="/brettsmith-portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
 
         <Footer />

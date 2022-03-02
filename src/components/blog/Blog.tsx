@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import AuthContext from "../../auth-context";
 
 const Blog: React.FC = () => {
@@ -7,13 +8,14 @@ const Blog: React.FC = () => {
 
   useEffect(() => {
     const blogArr = ctx.blogTable.map((blog) => (
-      <div
+      <NavLink
         key={blog.id}
-        className="py-4 px-12 border-2 rounded-md flex justify-between items-center hover:scale-105"
+        to={"/blog/" + blog.slug}
+        className="py-4 px-12 border-2 rounded-md cursor-pointer flex justify-between items-center hover:scale-105"
       >
         <h3 className="text-xl">{blog.title}</h3>
         <p>{blog.date}</p>
-      </div>
+      </NavLink>
     ));
 
     setBlog(blogArr);
