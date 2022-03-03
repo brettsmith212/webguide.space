@@ -7,6 +7,7 @@ import Portfolio from "./components/portfolio/Portfolio";
 import Blog from "./components/blog/Blog";
 import BlogPost from "./components/blog/BlogPost";
 import Footer from "./components/Footer";
+import AdminLogin from "./components/AdminLogin";
 import AuthContext from "./auth-context";
 
 // inspiration site: https://uvodo.com/?ref=land-book.com
@@ -38,6 +39,7 @@ const App: React.FC = () => {
           <Route path="/brettsmith-portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
         </Routes>
 
         <Footer />
