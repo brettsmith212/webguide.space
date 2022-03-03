@@ -19,6 +19,7 @@ interface AppContextInterface {
   adminLoggedIn: boolean;
   userLoggedIn: boolean;
   checkAdminLoggedIn: () => void;
+  checkUserLoggedIn: () => void;
   signout: () => void;
   signInWithGoogle: () => void;
 }
@@ -37,6 +38,7 @@ const AuthContext = React.createContext<AppContextInterface>({
   adminLoggedIn: false,
   userLoggedIn: false,
   checkAdminLoggedIn: () => {},
+  checkUserLoggedIn: () => {},
   signout: () => {},
   signInWithGoogle: () => {},
 });
@@ -89,6 +91,17 @@ export const AuthContextProvider = (props: Props) => {
     }
   };
 
+  const checkUserLoggedIn = () => {
+    const user = supabase.auth.user();
+    if (user) {
+      if (user.email !== "brettsmith212@gmail.com") {
+        setUserLoggedIn(true);
+      } else {
+        setUserLoggedIn(false);
+      }
+    }
+  };
+
   async function signout() {
     const { error } = await supabase.auth.signOut();
     if (error) {
@@ -130,6 +143,7 @@ export const AuthContextProvider = (props: Props) => {
         adminLoggedIn: adminLoggedIn,
         userLoggedIn: userLoggedIn,
         checkAdminLoggedIn: checkAdminLoggedIn,
+        checkUserLoggedIn: checkUserLoggedIn,
         signout: signout,
         signInWithGoogle: signInWithGoogle,
       }}

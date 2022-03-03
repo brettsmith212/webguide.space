@@ -44,3 +44,5 @@ export const inspiration = "inspiration";
 export const learning = "learning";
 export const cheatsheets = "cheatsheets";
 export const web3 = "web3";
+
+export const adminEmail = "brettsmith212@gmail.com";

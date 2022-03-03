@@ -2,8 +2,11 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../auth-context";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const ctx = useContext(AuthContext);
+
+  console.log("ADMIN: ", ctx.adminLoggedIn);
+  console.log("USER: ", ctx.userLoggedIn);
 
   return (
     <div>
@@ -24,6 +27,11 @@ const Footer = () => {
         {ctx.adminLoggedIn && (
           <button className=" hover:text-violet-600 pb-2" onClick={ctx.signout}>
             Admin Logout
+          </button>
+        )}
+        {ctx.userLoggedIn && (
+          <button className=" hover:text-violet-600 pb-2" onClick={ctx.signout}>
+            User Logout
           </button>
         )}
         <p className="text-sm my-8">©WebGuide 2022 </p>

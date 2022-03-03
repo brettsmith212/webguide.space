@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { supabase } from "../supabaseClient";
 import withRouter from "../hooks/withRouter";
 import ReactGA from "react-ga";
+import AuthContext from "../auth-context";
 
 const pathHome = "/";
 const pathGuide = "/theguide";
@@ -15,10 +15,9 @@ const inactive = "hover:text-violet-500";
 ReactGA.initialize(import.meta.env.VITE_GA_TRACKING_CODE);
 
 const Navbar: React.FC = () => {
-  // const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  // const [user, setUser] = useState<object>({});
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
+  const ctx = useContext(AuthContext);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -27,38 +26,6 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
   });
-
-  // async function signInWithGoogle() {
-  //   const { user, session, error } = await supabase.auth.signIn({
-  //     provider: "google",
-  //   });
-
-  //   if (user) {
-  //     console.log(user);
-  //     setLoggedIn(true);
-  //     return user;
-  //   }
-  //   if (error) {
-  //     console.error(error);
-  //     return error;
-  //   }
-  // }
-
-  // async function signout() {
-  //   const { error } = await supabase.auth.signOut();
-  //   if (error) {
-  //     console.error(error);
-  //   }
-  //   setLoggedIn(false);
-  // }
-
-  // useEffect(() => {
-  //   const user = supabase.auth.user();
-  //   if (user) {
-  //     setUser(user);
-  //     setLoggedIn(true);
-  //   }
-  // }, [loggedIn]);
 
   return (
     <nav className="flex flex-col">
@@ -95,22 +62,22 @@ const Navbar: React.FC = () => {
           >
             Portfolio
           </NavLink>
-          {/* {!loggedIn && (
-          <button
-            className="bg-violet-500 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-6 text-white hover:bg-violet-600 hover:border-violet-600 pb-2"
-            onClick={signInWithGoogle}
-          >
-            Login
-          </button>
-        )}
-        {loggedIn && (
-          <button
-            className="bg-violet-500 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-6 text-white hover:bg-violet-600 hover:border-violet-600 pb-2"
-            onClick={signout}
-          >
-            Logout
-          </button>
-        )} */}
+          {/* {!ctx.userLoggedIn && (
+            <button
+              className="bg-violet-500 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-6 text-white hover:bg-violet-600 hover:border-violet-600 pb-2"
+              onClick={ctx.signInWithGoogle}
+            >
+              Login
+            </button>
+          )}
+          {ctx.userLoggedIn && (
+            <button
+              className="bg-violet-500 border-2 shadow-xl shadow-violet-500/30 border-violet-500 rounded-full py-2 px-6 text-white hover:bg-violet-600 hover:border-violet-600 pb-2"
+              onClick={ctx.signout}
+            >
+              Logout
+            </button>
+          )} */}
         </div>
         {/* Mobile View */}
         <div className="md:hidden flex flex-col items-center">

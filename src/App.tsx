@@ -25,6 +25,10 @@ const App: React.FC = () => {
   }, [ctx.adminLoggedIn, ctx.signInWithGoogle, ctx.signout]);
 
   useEffect(() => {
+    ctx.checkUserLoggedIn();
+  }, [ctx.userLoggedIn, ctx.signInWithGoogle, ctx.signout]);
+
+  useEffect(() => {
     ctx.getBlogTable();
   }, [ctx.orderByAsc, ctx.refreshBlogDb]);
 
