@@ -1,42 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { supabase } from "../supabaseClient";
+import AuthContext from "../auth-context";
 
 const Footer = () => {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const [user, setUser] = useState<object>({});
+  const ctx = useContext(AuthContext);
+  // const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  // const [user, setUser] = useState<object>({});
 
-  async function signInWithGoogle() {
-    const { user, session, error } = await supabase.auth.signIn({
-      provider: "google",
-    });
+  // async function signInWithGoogle() {
+  //   const { user, session, error } = await supabase.auth.signIn({
+  //     provider: "google",
+  //   });
 
-    if (user) {
-      console.log(user);
-      setLoggedIn(true);
-      return user;
-    }
-    if (error) {
-      console.error(error);
-      return error;
-    }
-  }
+  //   if (user) {
+  //     console.log(user);
+  //     setLoggedIn(true);
+  //     return user;
+  //   }
+  //   if (error) {
+  //     console.error(error);
+  //     return error;
+  //   }
+  // }
 
-  async function signout() {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error(error);
-    }
-    setLoggedIn(false);
-  }
+  // async function signout() {
+  //   const { error } = await supabase.auth.signOut();
+  //   if (error) {
+  //     console.error(error);
+  //   }
+  //   setLoggedIn(false);
+  // }
 
-  useEffect(() => {
-    const user = supabase.auth.user();
-    if (user) {
-      setUser(user);
-      setLoggedIn(true);
-    }
-  }, [loggedIn]);
+  // useEffect(() => {
+  //   const user = supabase.auth.user();
+  //   if (user) {
+  //     setUser(user);
+  //     setLoggedIn(true);
+  //   }
+  // }, [loggedIn]);
 
   return (
     <div>
@@ -55,16 +57,16 @@ const Footer = () => {
           Portfolio
         </NavLink>
 
-        {!loggedIn && (
+        {!ctx.adminLoggedIn && (
           <button
             className=" hover:text-violet-600 pb-2"
-            onClick={signInWithGoogle}
+            onClick={ctx.signInWithGoogle}
           >
             Beta - Login
           </button>
         )}
-        {loggedIn && (
-          <button className=" hover:text-violet-600 pb-2" onClick={signout}>
+        {ctx.adminLoggedIn && (
+          <button className=" hover:text-violet-600 pb-2" onClick={ctx.signout}>
             Beta - Logout
           </button>
         )}

@@ -14,6 +14,13 @@ interface AppContextInterface {
   getPortfolioTable: () => void;
   orderByAsc: boolean;
   setOrderByAsc: React.Dispatch<React.SetStateAction<any>>;
+  refreshBlogDb: boolean;
+  setRefreshBlogDb: React.Dispatch<React.SetStateAction<any>>;
+  adminLoggedIn: boolean;
+  userLoggedIn: boolean;
+  checkAdminLoggedIn: () => void;
+  signout: () => void;
+  signInWithGoogle: () => void;
 }
 
 const AuthContext = React.createContext<AppContextInterface>({
@@ -23,15 +30,27 @@ const AuthContext = React.createContext<AppContextInterface>({
   getResourceTable: () => {},
   getBlogTable: () => {},
   getPortfolioTable: () => {},
-  orderByAsc: true,
+  orderByAsc: false,
   setOrderByAsc: () => {},
+  refreshBlogDb: false,
+  setRefreshBlogDb: () => {},
+  adminLoggedIn: false,
+  userLoggedIn: false,
+  checkAdminLoggedIn: () => {},
+  signout: () => {},
+  signInWithGoogle: () => {},
 });
 
 export const AuthContextProvider = (props: Props) => {
   const [resources, setResources] = useState<any[]>([]);
   const [blog, setBlog] = useState<any[]>([]);
   const [portfolio, setPortfolio] = useState<any[]>([]);
-  const [orderByAsc, setOrderByAsc] = useState<boolean>(true);
+  const [orderByAsc, setOrderByAsc] = useState<boolean>(false);
+  const [refreshBlogDb, setRefreshBlogDb] = useState<boolean>(false);
+  const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false);
+  const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
+
+  // console.log(adminLoggedIn);
 
   const getResourceTable = async () => {
     const { data, error } = await supabase.from("resources").select("*");
@@ -63,6 +82,41 @@ export const AuthContextProvider = (props: Props) => {
     }
   };
 
+  const checkAdminLoggedIn = () => {
+    const user = supabase.auth.user();
+    // console.log(user);
+    if (user?.email === "brettsmith212@gmail.com") {
+      setAdminLoggedIn(true);
+    } else {
+      setAdminLoggedIn(false);
+    }
+  };
+
+  async function signout() {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error(error);
+    }
+    setAdminLoggedIn(false);
+    setUserLoggedIn(false);
+  }
+
+  async function signInWithGoogle() {
+    const { user, session, error } = await supabase.auth.signIn({
+      provider: "google",
+    });
+
+    if (user) {
+      console.log(user);
+      setUserLoggedIn(true);
+      return user;
+    }
+    if (error) {
+      console.error(error);
+      return error;
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -74,6 +128,13 @@ export const AuthContextProvider = (props: Props) => {
         getPortfolioTable: getPortfolioTable,
         orderByAsc: orderByAsc,
         setOrderByAsc: setOrderByAsc,
+        refreshBlogDb: refreshBlogDb,
+        setRefreshBlogDb: setRefreshBlogDb,
+        adminLoggedIn: adminLoggedIn,
+        userLoggedIn: userLoggedIn,
+        checkAdminLoggedIn: checkAdminLoggedIn,
+        signout: signout,
+        signInWithGoogle: signInWithGoogle,
       }}
     >
       {props.children}

@@ -20,8 +20,12 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    ctx.checkAdminLoggedIn();
+  }, [ctx.adminLoggedIn, ctx.signInWithGoogle, ctx.signout]);
+
+  useEffect(() => {
     ctx.getBlogTable();
-  }, [ctx.orderByAsc]);
+  }, [ctx.orderByAsc, ctx.refreshBlogDb]);
 
   return (
     <main className="md:mx-16 mx-8 font-poppins ">
