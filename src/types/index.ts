@@ -15,6 +15,15 @@ export interface Show {
   images: boolean;
 }
 
+export interface BlogTableData {
+  id: number;
+  title: string;
+  content: string;
+  date: string;
+  slug: string;
+  author: string;
+}
+
 export const allResources = "all";
 export const cssHelpers = "cssHelpers";
 export const icons = "icons";

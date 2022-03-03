@@ -1,44 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import AuthContext from "../auth-context";
 
 const Footer = () => {
   const ctx = useContext(AuthContext);
-  // const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  // const [user, setUser] = useState<object>({});
-
-  // async function signInWithGoogle() {
-  //   const { user, session, error } = await supabase.auth.signIn({
-  //     provider: "google",
-  //   });
-
-  //   if (user) {
-  //     console.log(user);
-  //     setLoggedIn(true);
-  //     return user;
-  //   }
-  //   if (error) {
-  //     console.error(error);
-  //     return error;
-  //   }
-  // }
-
-  // async function signout() {
-  //   const { error } = await supabase.auth.signOut();
-  //   if (error) {
-  //     console.error(error);
-  //   }
-  //   setLoggedIn(false);
-  // }
-
-  // useEffect(() => {
-  //   const user = supabase.auth.user();
-  //   if (user) {
-  //     setUser(user);
-  //     setLoggedIn(true);
-  //   }
-  // }, [loggedIn]);
 
   return (
     <div>

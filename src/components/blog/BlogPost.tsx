@@ -2,15 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AuthContext from "../../auth-context";
 import { supabase } from "../../supabaseClient";
-
-interface BlogTableData {
-  id: number;
-  title: string;
-  content: string;
-  date: string;
-  slug: string;
-  author: string;
-}
+import { BlogTableData } from "../../types";
 
 const BlogPost = () => {
   const [blogPost, setBlogPost] = useState<any[]>();

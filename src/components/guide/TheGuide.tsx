@@ -1,31 +1,19 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import Resources from "./resources/Resources";
 import Categories from "./categories/Categories";
 import AddResource from "./resources/AddResource";
-import { supabase } from "../../supabaseClient";
 import { allResources } from "../../types";
 import AuthContext from "../../auth-context";
 
 const TheGuide: React.FC = () => {
   const [show, setShow] = useState<string>(allResources);
   const [showAddResource, setShowAddResource] = useState<boolean>(false);
-  // const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const resourcesSection = useRef<HTMLDivElement>(null);
   const ctx = useContext(AuthContext);
 
   const handleShowAddResource = () => {
     setShowAddResource(!showAddResource);
   };
-
-  // useEffect(() => {
-  //   const user = supabase.auth.user();
-  //   console.log(user);
-  //   if (user?.email === "brettsmith212@gmail.com") {
-  //     setLoggedIn(true);
-  //   } else {
-  //     setLoggedIn(false);
-  //   }
-  // }, []);
 
   return (
     <section>

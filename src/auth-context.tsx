@@ -50,8 +50,6 @@ export const AuthContextProvider = (props: Props) => {
   const [adminLoggedIn, setAdminLoggedIn] = useState<boolean>(false);
   const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
 
-  // console.log(adminLoggedIn);
-
   const getResourceTable = async () => {
     const { data, error } = await supabase.from("resources").select("*");
     if (error) {
@@ -84,7 +82,6 @@ export const AuthContextProvider = (props: Props) => {
 
   const checkAdminLoggedIn = () => {
     const user = supabase.auth.user();
-    // console.log(user);
     if (user?.email === "brettsmith212@gmail.com") {
       setAdminLoggedIn(true);
     } else {
