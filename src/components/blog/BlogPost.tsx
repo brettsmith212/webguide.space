@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import AuthContext from "../../auth-context";
 import { supabase } from "../../supabaseClient";
 import { BlogTableData } from "../../types";
+import { NavLink } from "react-router-dom";
 
 const BlogPost = () => {
   const [blogPost, setBlogPost] = useState<any[]>();
@@ -20,6 +21,21 @@ const BlogPost = () => {
 
   const handleEditPost = () => {
     setIsEditing(!isEditing);
+  };
+
+  const handleDeletePost = async () => {
+    const { data, error } = await supabase
+      .from("blog")
+      .delete()
+      .match({ id: blogTable.id });
+
+    if (data) {
+      setIsEditing(false);
+      ctx.setRefreshBlogDb(!ctx.refreshBlogDb);
+    }
+    if (error) {
+      console.log(error);
+    }
   };
 
   const handleSavePost = async () => {
@@ -67,7 +83,7 @@ const BlogPost = () => {
   return (
     <div className="my-12">
       {ctx.adminLoggedIn && (
-        <div className="flex gap-4">
+        <div className="flex gap-4 my-4">
           {isEditing ? (
             <>
               <button
@@ -82,14 +98,30 @@ const BlogPost = () => {
               >
                 Back
               </button>
+              <NavLink to="/blog">
+                <button
+                  onClick={handleDeletePost}
+                  className="border-2 border-red-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-red-500 text-white shadow-xl shadow-violet-500/30 hover:bg-red-600 hover:border-red-600"
+                >
+                  Delete
+                </button>
+              </NavLink>
             </>
           ) : (
-            <button
-              onClick={handleEditPost}
-              className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-violet-500 text-white shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600"
-            >
-              Edit Post
-            </button>
+            <>
+              <button
+                onClick={handleEditPost}
+                className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-violet-500 text-white shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600"
+              >
+                Edit Post
+              </button>
+              <NavLink
+                to="/blog"
+                className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto  text-violet-700 shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600 hover:text-white"
+              >
+                Back
+              </NavLink>
+            </>
           )}
         </div>
       )}

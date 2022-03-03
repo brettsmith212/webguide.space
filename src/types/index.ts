@@ -24,6 +24,15 @@ export interface BlogTableData {
   author: string;
 }
 
+export interface NewPostData {
+  title: string;
+  content: string;
+  date: string;
+  slug: string;
+  author: string;
+  user_id: string;
+}
+
 export const allResources = "all";
 export const cssHelpers = "cssHelpers";
 export const icons = "icons";
