@@ -181,7 +181,7 @@ const BlogPost = () => {
           ></textarea>
         </div>
       ) : (
-        <div className="md:px-24 px-12">
+        <div className="md:px-24 px-4">
           {blogPost ? blogPost : <p>Loading Post</p>}
         </div>
       )}

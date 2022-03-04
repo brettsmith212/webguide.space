@@ -66,10 +66,10 @@ const Blog: React.FC = () => {
       <NavLink
         key={blog.id}
         to={"/blog/" + blog.slug}
-        className="py-4 px-12 border-2 rounded-md cursor-pointer flex justify-between items-center duration-300 hover:bg-violet-100 hover:scale-105"
+        className="py-4 px-12 border-2 rounded-md cursor-pointer flex flex-wrap gap-4 justify-between duration-300 hover:bg-violet-100 hover:scale-105"
       >
-        <h3 className="text-xl">{blog.title}</h3>
-        <p>{blog.date}</p>
+        <h3 className="md:text-xl text-sm">{blog.title}</h3>
+        <p className="md:text-base text-sm">{blog.date}</p>
       </NavLink>
     ));
 
