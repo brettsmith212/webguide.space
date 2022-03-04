@@ -110,14 +110,6 @@ const Blog: React.FC = () => {
             className="border-2 rounded-md p-2"
           ></textarea>
           <h3 className="text-xl">Date</h3>
-          {/* <textarea
-            name="date"
-            cols={30}
-            rows={1}
-            value={newPost.date}
-            onChange={handleOnChange}
-            className="border-2 rounded-md p-2"
-          ></textarea> */}
           <input
             type="date"
             name="date"

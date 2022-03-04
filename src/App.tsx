@@ -22,11 +22,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     ctx.checkAdminLoggedIn();
-  }, [ctx.adminLoggedIn, ctx.signInWithGoogle, ctx.signout]);
-
-  useEffect(() => {
     ctx.checkUserLoggedIn();
-  }, [ctx.userLoggedIn, ctx.signInWithGoogle, ctx.signout]);
+  }, [ctx.adminLoggedIn, ctx.userLoggedIn, ctx.signInWithGoogle, ctx.signout]);
 
   useEffect(() => {
     ctx.getBlogTable();

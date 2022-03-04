@@ -5,9 +5,6 @@ import AuthContext from "../auth-context";
 const Footer: React.FC = () => {
   const ctx = useContext(AuthContext);
 
-  console.log("ADMIN: ", ctx.adminLoggedIn);
-  console.log("USER: ", ctx.userLoggedIn);
-
   return (
     <div>
       <hr />

@@ -59,7 +59,9 @@ const BlogPost = () => {
     setIsEditing(!isEditing);
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleOnChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     setBlogTable({
       ...blogTable,
       [e.target.name]: e.target.value,
@@ -71,9 +73,9 @@ const BlogPost = () => {
     setBlogTable(filteredBlog[0]);
     const blogPostMarkdown = filteredBlog.map((blog) => (
       <div key={blog.id} className="flex flex-col">
-        <h1 className="text-2xl text-center">{blog.title}</h1>
-        <p>{blog.date}</p>
-        <p className="mb-8">By {blog.author}</p>
+        <h1 className="text-2xl text-center mb-8">{blog.title}</h1>
+        <p className="text-sm">{blog.date}</p>
+        <p className="mb-8 text-sm">By {blog.author}</p>
         <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>
       </div>
     ));
@@ -83,44 +85,50 @@ const BlogPost = () => {
   return (
     <div className="my-12">
       {ctx.adminLoggedIn && (
-        <div className="flex gap-4 my-4">
+        <div className="flex gap-4 my-4 justify-between">
           {isEditing ? (
             <>
-              <button
-                onClick={handleSavePost}
-                className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-violet-500 text-white shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600"
-              >
-                Save
-              </button>
-              <button
-                onClick={handleEditPost}
-                className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto  text-violet-700 shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600 hover:text-white"
-              >
-                Back
-              </button>
-              <NavLink to="/blog">
+              <div className="flex gap-4">
                 <button
-                  onClick={handleDeletePost}
-                  className="border-2 border-red-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-red-500 text-white shadow-xl shadow-violet-500/30 hover:bg-red-600 hover:border-red-600"
+                  onClick={handleSavePost}
+                  className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-violet-500 text-white shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600"
                 >
-                  Delete
+                  Save
                 </button>
-              </NavLink>
+                <button
+                  onClick={handleEditPost}
+                  className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto  text-violet-700 shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600 hover:text-white"
+                >
+                  Back
+                </button>
+              </div>
+              <div>
+                <NavLink to="/blog">
+                  <button
+                    onClick={handleDeletePost}
+                    className="border-2 border-red-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-red-500 text-white shadow-xl shadow-violet-500/30 hover:bg-red-600 hover:border-red-600"
+                  >
+                    Delete
+                  </button>
+                </NavLink>
+              </div>
             </>
           ) : (
             <>
-              <button
-                onClick={handleEditPost}
-                className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-violet-500 text-white shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600"
-              >
-                Edit Post
-              </button>
-              <NavLink
-                to="/blog"
-                className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto  text-violet-700 shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600 hover:text-white"
-              >
-                Back
-              </NavLink>
+              <div className="flex gap-4">
+                <button
+                  onClick={handleEditPost}
+                  className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto bg-violet-500 text-white shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600"
+                >
+                  Edit Post
+                </button>
+                <NavLink
+                  to="/blog"
+                  className="border-2 border-violet-500 rounded-full md:text-base text-xl py-2 px-8 mb-4 w-full md:w-auto  text-violet-700 shadow-xl shadow-violet-500/30 hover:bg-violet-600 hover:border-violet-600 hover:text-white"
+                >
+                  Back
+                </NavLink>
+              </div>
             </>
           )}
         </div>
@@ -137,14 +145,13 @@ const BlogPost = () => {
             className="border-2 rounded-md p-2"
           ></textarea>
           <h3 className="text-xl">Date</h3>
-          <textarea
+          <input
+            type="date"
             name="date"
-            cols={30}
-            rows={1}
             value={blogTable.date}
             onChange={handleOnChange}
             className="border-2 rounded-md p-2"
-          ></textarea>
+          />
           <h3 className="text-xl">Content</h3>
           <textarea
             name="content"
@@ -174,7 +181,9 @@ const BlogPost = () => {
           ></textarea>
         </div>
       ) : (
-        <div>{blogPost ? blogPost : <p>Loading Post</p>}</div>
+        <div className="md:px-24 px-12">
+          {blogPost ? blogPost : <p>Loading Post</p>}
+        </div>
       )}
     </div>
   );
