@@ -46,7 +46,7 @@ const TheGuide: React.FC = () => {
       </div>
       <div className="flex flex-col items-center my-20 gap-12">
         <h2 className="md:text-3xl text-2xl text-violet-800">
-          What are you building today?
+          What are you working on today?
         </h2>
         <div className="flex md:flex-wrap md:flex-row flex-col gap-4 my-4 items-center justify-center w-full md:w-auto">
           <Categories
