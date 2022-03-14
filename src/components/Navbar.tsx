@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
-  });
+  }, []);
 
   return (
     <nav className="flex flex-col">
@@ -103,7 +103,7 @@ const Navbar: React.FC = () => {
       {showMenu && (
         <div className="md:hidden flex flex-col">
           <NavLink
-            className="block py-2 px-2 text-center text-violet-700              hover:bg-violet-200"
+            className="block py-2 px-2 text-center text-violet-700 hover:bg-violet-200"
             to="/"
             onClick={handleShowMenu}
           >
