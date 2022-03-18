@@ -1,39 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { supabase } from "../../supabaseClient";
 import AuthContext from "../../auth-context";
 
 const Portfolio: React.FC = () => {
-  // const [loading, setLoading] = useState(false);
   const [projects, setProjects] = useState<any[]>();
-  // const [dataArr, setDataArr] = useState<any[]>([
-  //   {
-  //     id: 0,
-  //     title: "",
-  //     image: "",
-  //     description: "",
-  //     github_link: "",
-  //     project_link: "",
-  //   },
-  // ]);
   const ctx = useContext(AuthContext);
 
-  // const getProjects = async () => {
-  //   setLoading(true);
-  //   const { data, error } = await supabase.from("projects").select("*");
-  //   if (error) {
-  //     console.log("ERROR", error);
-  //   } else if (data) {
-  //     setDataArr(data);
-  //   }
-  //   setLoading(false);
-  // };
-
-  // useEffect(() => {
-  //   getProjects();
-  // }, []);
-
   useEffect(() => {
-    // const proj = dataArr.map((project) => {
     const proj = ctx.portfolioTable.map((project) => {
       return (
         <div
@@ -80,7 +52,7 @@ const Portfolio: React.FC = () => {
           <h2 className="text-3xl md:text-2xl lg:text-3xl">Hi, I'm Brett!</h2>
           <p className="text-xl md:text-base lg:text-xl">
             A little about me… I am a web developer skilled in HTML, CSS,
-            JavaScript, TypeScript, React, Node, Express, Supabase and Firebase.
+            JavaScript, TypeScript, React, Redux, Node, Express, Supabase and Firebase.
             I have built some cool stuff, so check out my projects! If you want
             to see more be sure to checkout my{" "}
             <a

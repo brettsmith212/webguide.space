@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
+  }, [location]);
 
   return (
     <nav className="flex flex-col">
