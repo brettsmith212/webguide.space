@@ -11,3 +11,5 @@
 ### Tech Stack: React, TypeScript, Tailwind CSS, Context API and Supabase
 
 ### I also have my portfolio @ https://webguide.space/brettsmith-portfolio
+
+![supabase_erd](https://user-images.githubusercontent.com/67445684/168733065-15caa035-245c-49cc-869f-c0b561a0ba66.png)
